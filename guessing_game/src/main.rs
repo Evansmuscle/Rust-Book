@@ -5,6 +5,7 @@ use std::io;
 fn main() {
     println!("Guess the number between 0 and 100!");
     println!("But remember, you only get 10 tries!");
+    println!("You can always quit the game by just typing \"quit\".");
 
     let mut rng = rand::thread_rng();
     let number: u32 = rng.gen_range(1..100);
@@ -13,7 +14,7 @@ fn main() {
     loop {
         if tries == 0 {
             println!("You couldn't guess the number in 10 tries! Better luck next time.");
-            return;
+            break;
         }
 
         let mut guess = String::new();
@@ -22,10 +23,17 @@ fn main() {
             .read_line(&mut guess)
             .expect("Failed to read the line");
 
-        let guess: u32 = guess
-            .trim()
-            .parse()
-            .expect("Please type a number and a number only!");
+        if &guess == "quit" {
+            break;
+        }
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Please enter a valid number.");
+                continue;
+            }
+        };
 
         match guess.cmp(&number) {
             Ordering::Less => {
@@ -39,11 +47,13 @@ fn main() {
             Ordering::Equal => {
                 println!("Correct number!");
                 println!("Game over, you won!");
-                return;
+                break;
             }
         }
 
         println!("You guessed: {}", guess);
         println!("Tries left: {}", tries);
     }
+
+    return;
 }

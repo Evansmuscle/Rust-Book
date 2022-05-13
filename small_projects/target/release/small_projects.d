@@ -1,0 +1,1 @@
+C:\Users\user\Desktop\Work\Rust-Book\small_projects\target\release\small_projects.exe: C:\Users\user\Desktop\Work\Rust-Book\small_projects\src\christmas_carol.rs C:\Users\user\Desktop\Work\Rust-Book\small_projects\src\fahrenheit_to_celcius.rs C:\Users\user\Desktop\Work\Rust-Book\small_projects\src\main.rs C:\Users\user\Desktop\Work\Rust-Book\small_projects\src\nth_fibonacci.rs
